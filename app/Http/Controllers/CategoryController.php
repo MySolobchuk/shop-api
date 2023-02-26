@@ -19,7 +19,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return CategoryResource::collection(Category::with('products')->paginate());
+        return CategoryResource::collection(Category::with('products', 'parent', 'children')->paginate());
     }
 
     /**
@@ -32,7 +32,7 @@ class CategoryController extends Controller
     {
         $category = Category::create($request->all());
 
-        return CategoryResource::make($category->load('products'));
+        return CategoryResource::make($category->load('products', 'parent', 'children'));
     }
 
     /**
@@ -43,7 +43,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return CategoryResource::make($category->load('products'));
+        return CategoryResource::make($category->load('products', 'parent', 'children'));
     }
 
     /**
@@ -57,7 +57,7 @@ class CategoryController extends Controller
     {
         $category->update($request->all());
 
-        return CategoryResource::make($category->load('products'));
+        return CategoryResource::make($category->load('products', 'parent', 'children'));
     }
 
     /**
