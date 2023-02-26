@@ -25,13 +25,15 @@ class StoreProductRequest extends FormRequest
     {
         return [
             'name' => ['required', 'max:80'],
-            'label' => ['nullable', 'max:80'],
+            'labelMark' => ['nullable', 'max:80'],
             'description' => ['nullable'],
             'first_price' => ['required','numeric'],
             'price' => ['required','numeric'],
             'code' => ['required', 'integer'],
             'preview' => ['nullable', 'image', 'max:1999'],
-            'category_id' => ['nullable', 'integer', 'exists:categories,id']
+            'category_id' => ['nullable', 'integer', 'exists:categories,id'],
+            'promoCod' => ['nullable', 'string'],
+            'status' => ['nullable', 'boolean']
         ];
     }
 }

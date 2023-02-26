@@ -60,8 +60,6 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        dd(Storage::path('63d58a801649b.png'));
-
         return ProductResource::make($product->load('category'));
     }
 

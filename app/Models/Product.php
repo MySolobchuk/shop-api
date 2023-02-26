@@ -10,13 +10,19 @@ class Product extends Model
 {
     protected $fillable = [
         'name',
-        'label',
+        'labelMark',
         'description',
         'first_price',
         'price',
         'code',
         'preview',
-        'category_id'
+        'category_id',
+        'promoCod',
+        'status'
+    ];
+
+    protected $casts = [
+        'status' => 'boolean'
     ];
 
     public function category(): BelongsTo

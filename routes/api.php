@@ -38,7 +38,7 @@ Route::controller(CategoryController::class)->prefix('categories')->group(functi
 
 Route::controller(ProductController::class)->prefix('products')->group(function () {
     Route::get('/', 'index');
-    Route::get('/{id}', 'show');
+    Route::get('/{product}', 'show');
 
     Route::middleware('auth:sanctum')->group(function () {
         Route::post('/', 'store');
