@@ -32,20 +32,7 @@ class ProductController extends Controller
     {
         $product = new Product;
 
-        if($request->hasFile('preview')){
-
-            $image = $request->preview;
-
-            $ext = $image->getClientOriginalExtension();
-
-            $filename = uniqid() . '.' . $ext;
-
-            $image->storeAs('public/preview', $filename);
-
-            $product->fill(['preview' => $filename]);
-        }
-
-        $product->fill($request->except('preview'));
+        $product->fill($request->all());
 
         $product->save();
 
