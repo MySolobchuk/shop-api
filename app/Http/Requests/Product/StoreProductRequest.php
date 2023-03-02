@@ -30,7 +30,7 @@ class StoreProductRequest extends FormRequest
             'first_price' => ['required','numeric'],
             'price' => ['required','numeric'],
             'code' => ['required', 'integer'],
-            'preview' => ['nullable', 'image', 'max:1999'],
+            'preview' => ['nullable', 'string'],
             'category_id' => ['nullable', 'integer', 'exists:categories,id'],
             'promoCod' => ['nullable', 'string'],
             'status' => ['nullable', 'boolean']
