@@ -22,7 +22,7 @@ class CreateProductsTable extends Migration
             $table->float('price')->comment('Цена');
             $table->integer('code')->comment('Код товара');
             $table->string('preview')->nullable();
-            $table->foreignId('category_id')->nullable()->constrained();
+            $table->foreignId('category_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
             $table->timestamps();
         });
     }

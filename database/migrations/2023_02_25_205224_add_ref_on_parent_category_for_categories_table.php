@@ -16,7 +16,7 @@ class AddRefOnParentCategoryForCategoriesTable extends Migration
         Schema::table('categories', function (Blueprint $table) {
             $table->unsignedBigInteger('parent_id')->nullable();
 
-            $table->foreign('parent_id')->references('id')->on('categories');
+            $table->foreign('parent_id')->references('id')->on('categories')->cascadeOnUpdate()->nullOnDelete();
         });
     }
 
