@@ -18,11 +18,13 @@ class Product extends Model
         'preview',
         'category_id',
         'promoCod',
-        'status'
+        'status',
+        'quantity'
     ];
 
     protected $casts = [
-        'status' => 'boolean'
+        'status' => 'boolean',
+        'quantity' => 'integer'
     ];
 
     public function category(): BelongsTo

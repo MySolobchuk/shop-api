@@ -36,6 +36,8 @@ class ProductController extends Controller
 
         $product->save();
 
+        $product = $product->fresh();
+
         return ProductResource::make($product->load('category'));
     }
 

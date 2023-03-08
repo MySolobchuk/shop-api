@@ -32,6 +32,8 @@ class CategoryController extends Controller
     {
         $category = Category::create($request->all());
 
+        $category = $category->fresh();
+
         return CategoryResource::make($category->load('products', 'parent', 'children'));
     }
 
