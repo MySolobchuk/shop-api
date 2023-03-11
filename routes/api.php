@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,17 @@ Route::controller(ProductController::class)->prefix('products')->group(function 
         Route::post('/', 'store');
         Route::post('/{product}', 'update');
         Route::delete('/{product}', 'destroy');
+    });
+});
+
+Route::controller(FeedbackController::class)->prefix('feedback')->group(function () {
+    Route::get('/', 'index');
+    Route::get('/{feedback}', 'show');
+
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::post('/', 'store');
+        Route::post('/{feedback}', 'update');
+        Route::delete('/{feedback}', 'destroy');
     });
 });
 

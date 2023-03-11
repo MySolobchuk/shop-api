@@ -15,11 +15,11 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index()
     {
-        return ProductResource::collection(Product::with('category')->paginate());
+        return ProductResource::collection(Product::with('category', 'feedbacks')->paginate());
     }
 
     /**
@@ -38,7 +38,7 @@ class ProductController extends Controller
 
         $product = $product->fresh();
 
-        return ProductResource::make($product->load('category'));
+        return ProductResource::make($product->load('category', 'feedbacks'));
     }
 
     /**
@@ -49,7 +49,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return ProductResource::make($product->load('category'));
+        return ProductResource::make($product->load('category', 'feedbacks'));
     }
 
     /**
@@ -63,7 +63,7 @@ class ProductController extends Controller
     {
         $product->update($request->all());
 
-        return ProductResource::make($product->load('category'));
+        return ProductResource::make($product->load('category', 'feedbacks'));
     }
 
     /**
