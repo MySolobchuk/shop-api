@@ -27,6 +27,7 @@ class UpdateFeedbackRequests extends FormRequest
             'name' => ['string', 'min:2'],
             'product_id' => ['exists:products,id', 'required'],
             'message' => ['string', 'min:2'],
+            'avatar' => ['string', 'min:2'],
         ];
     }
 }

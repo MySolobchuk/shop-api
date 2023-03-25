@@ -13,6 +13,7 @@ class Feedback extends Model
         'name',
         'product_id',
         'message',
+        'avatar'
     ];
 
     public function product(): BelongsTo
