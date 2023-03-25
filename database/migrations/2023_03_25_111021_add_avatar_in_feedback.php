@@ -14,7 +14,7 @@ class AddAvatarInFeedback extends Migration
     public function up()
     {
         Schema::table('feedbacks', function (Blueprint $table) {
-            $table->text('avatar');
+            $table->text('avatar')->nullable();
         });
     }
 
