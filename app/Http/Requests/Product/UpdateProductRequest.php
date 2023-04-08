@@ -29,12 +29,13 @@ class UpdateProductRequest extends FormRequest
             'description' => ['nullable'],
             'first_price' => ['required','numeric'],
             'price' => ['required','numeric'],
-            'code' => ['unique:products,code','nullable', 'integer'],
+            'code' => ['nullable', 'string'],
             'quantity' => ['nullable', 'integer'],
             'preview' => ['nullable', 'string'],
             'category_id' => ['nullable', 'integer', 'exists:categories,id'],
             'promoCod' => ['nullable', 'string'],
-            'status' => ['nullable', 'boolean']
+            'status' => ['nullable', 'boolean'],
+            'unit_of_measure' => ['string']
         ];
     }
 }

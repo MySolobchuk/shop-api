@@ -20,7 +20,8 @@ class Product extends Model
         'category_id',
         'promoCod',
         'status',
-        'quantity'
+        'quantity',
+        'unit_of_measure'
     ];
 
     protected $casts = [
