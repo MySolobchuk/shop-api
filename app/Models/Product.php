@@ -21,12 +21,14 @@ class Product extends Model
         'promoCod',
         'status',
         'quantity',
-        'unit_of_measure'
+        'unit_of_measure',
+        'images'
     ];
 
     protected $casts = [
         'status' => 'boolean',
-        'quantity' => 'integer'
+        'quantity' => 'integer',
+        'images' => 'array'
     ];
 
     public function category(): BelongsTo

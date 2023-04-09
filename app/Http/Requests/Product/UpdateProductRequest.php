@@ -35,7 +35,8 @@ class UpdateProductRequest extends FormRequest
             'category_id' => ['nullable', 'integer', 'exists:categories,id'],
             'promoCod' => ['nullable', 'string'],
             'status' => ['nullable', 'boolean'],
-            'unit_of_measure' => ['string']
+            'unit_of_measure' => ['string'],
+            'images' => ['nullable', 'array']
         ];
     }
 }
