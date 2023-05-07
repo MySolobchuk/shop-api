@@ -4,69 +4,61 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Order\StoreOrderRequest;
 use App\Http\Requests\Order\UpdateOrderRequest;
+use App\Http\Resources\OrderResource;
+use App\Http\Resources\ProductResource;
+use App\Models\Item;
 use App\Models\Order;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Http\Response;
 
 class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return AnonymousResourceCollection
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return OrderResource::collection(Order::with('items', 'items.product')->paginate());
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\Order\StoreOrderRequest  $request
-     * @return \Illuminate\Http\Response
+     * @param StoreOrderRequest $request
+     * @return Response
      */
     public function store(StoreOrderRequest $request)
     {
-        //
+        $order = new Order($request->except('items'));
+        $order->save();
+
+        $order->items()->createMany($request->items);
+        $order->save();
+
+        return OrderResource::make($order->load('items', 'items.product'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
+     * @param Order $order
+     * @return Response
      */
     public function show(Order $order)
     {
-        //
+        return OrderResource::make($order->load('items', 'items.product'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Order $order)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\Order\UpdateOrderRequest  $request
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
+     * @param UpdateOrderRequest $request
+     * @param Order $order
+     * @return Response
      */
     public function update(UpdateOrderRequest $request, Order $order)
     {
@@ -76,11 +68,13 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
+     * @param Order $order
+     * @return JsonResponse
      */
     public function destroy(Order $order)
     {
-        //
+        $order->delete();
+
+        return \response()->json(null, 204);
     }
 }

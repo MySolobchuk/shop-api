@@ -64,7 +64,8 @@ class CreateAdmin extends Command
         $user = User::create([
             'name' => $name,
             'email' => $email,
-            'password' => $password
+            'password' => $password,
+            'is_admin' => true
         ]);
 
         $token = $user->createToken('api_auth')->plainTextToken;

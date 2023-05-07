@@ -27,7 +27,7 @@ class StoreProductRequest extends FormRequest
             'name' => ['required', 'max:80'],
             'labelMark' => ['nullable', 'max:80'],
             'description' => ['nullable'],
-            'first_price' => ['required','numeric'],
+            'discount' => ['nullable','integer', 'min:1', 'max:99'],
             'price' => ['required','numeric'],
             'code' => ['required', 'string'],
             'quantity' => ['nullable', 'integer'],

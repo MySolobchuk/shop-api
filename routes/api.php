@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -18,11 +19,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware(['auth:sanctum', 'admin'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:sanctum')->get('/me', function (Request $request) {
+Route::middleware(['auth:sanctum', 'admin'])->get('/me', function (Request $request) {
     return $request->user();
 });
 
@@ -30,7 +31,7 @@ Route::controller(CategoryController::class)->prefix('categories')->group(functi
     Route::get('/', 'index');
     Route::get('/{category}', 'show');
 
-    Route::middleware('auth:sanctum')->group(function () {
+    Route::middleware(['auth:sanctum', 'admin'])->group(function () {
         Route::post('/', 'store');
         Route::post('/{category}', 'update');
         Route::delete('/{category}', 'destroy');
@@ -41,7 +42,7 @@ Route::controller(ProductController::class)->prefix('products')->group(function 
     Route::get('/', 'index');
     Route::get('/{product}', 'show');
 
-    Route::middleware('auth:sanctum')->group(function () {
+    Route::middleware(['auth:sanctum', 'admin'])->group(function () {
         Route::post('/', 'store');
         Route::post('/{product}', 'update');
         Route::delete('/{product}', 'destroy');
@@ -52,7 +53,7 @@ Route::controller(FeedbackController::class)->prefix('feedback')->group(function
     Route::get('/', 'index');
     Route::get('/{feedback}', 'show');
 
-    Route::middleware('auth:sanctum')->group(function () {
+    Route::middleware(['auth:sanctum', 'admin'])->group(function () {
         Route::post('/', 'store');
         Route::post('/{feedback}', 'update');
         Route::delete('/{feedback}', 'destroy');
@@ -60,3 +61,13 @@ Route::controller(FeedbackController::class)->prefix('feedback')->group(function
 });
 
 Route::post('/admin/login', [AuthController::class, 'login']);
+Route::post('/registration', [AuthController::class, 'clientRegistration']);
+
+Route::controller(OrderController::class)->prefix('orders')->group(function () {
+    Route::get('/', 'index');
+    Route::get('/{order}', 'show');
+
+    Route::post('/', 'store');
+//    Route::post('/{order}', 'update');
+    Route::delete('/{order}', 'destroy');
+});

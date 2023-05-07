@@ -7,13 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * @property integer $discount
+ * @property float $price
+ * @property Category $category
+ */
 class Product extends Model
 {
     protected $fillable = [
         'name',
         'labelMark',
         'description',
-        'first_price',
+        'discount',
         'price',
         'code',
         'preview',
@@ -28,6 +33,7 @@ class Product extends Model
     protected $casts = [
         'status' => 'boolean',
         'quantity' => 'integer',
+        'discount' => 'integer',
         'images' => 'array'
     ];
 
