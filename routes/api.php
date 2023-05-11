@@ -1,10 +1,12 @@
 <?php
 
+use App\Enums\Gender;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,8 +25,24 @@ Route::middleware(['auth:sanctum', 'admin'])->get('/user', function (Request $re
     return $request->user();
 });
 
-Route::middleware(['auth:sanctum', 'admin'])->get('/me', function (Request $request) {
+Route::middleware(['auth:sanctum'])->get('/me', function (Request $request) {
     return $request->user();
+});
+
+Route::middleware(['auth:sanctum'])->post('/me/update', function (Request $request) {
+    $user = $request->user();
+
+    $request->validate([
+        'name' => 'string|max:255',
+        'email' => 'string|email|max:255|unique:users',
+        'gender' => ['string', new EnumValue(Gender::class)]
+    ]);
+
+    $user->update($request->except(['password']));
+
+    $user->fresh();
+
+    return response()->json(['user' => $user]);
 });
 
 Route::controller(CategoryController::class)->prefix('categories')->group(function () {

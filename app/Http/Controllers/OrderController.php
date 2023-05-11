@@ -11,6 +11,7 @@ use App\Models\Order;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -33,6 +34,7 @@ class OrderController extends Controller
     public function store(StoreOrderRequest $request)
     {
         $order = new Order($request->except('items'));
+
         $order->save();
 
         $order->items()->createMany($request->items);
