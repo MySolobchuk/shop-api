@@ -28,7 +28,10 @@ class AuthController extends Controller
             return response()->json(['error' => 'The provided credentials are incorrect.'], 401);
         }
 
-        return response()->json(['token' => $user->createToken('api_auth')->plainTextToken]);
+        return response()->json([
+            'user' => $user,
+            'token' => $user->createToken('api_auth')->plainTextToken
+        ]);
     }
 
     public function clientRegistration(Request $request)
