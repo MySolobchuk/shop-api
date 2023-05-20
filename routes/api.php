@@ -83,6 +83,9 @@ Route::post('/registration', [AuthController::class, 'clientRegistration']);
 
 Route::controller(OrderController::class)->prefix('orders')->group(function () {
     Route::get('/', 'index');
+
+    Route::get('/last-delivery', 'lastDelivery')->middleware(['auth:sanctum']);
+
     Route::get('/{order}', 'show');
 
     Route::post('/', 'store');

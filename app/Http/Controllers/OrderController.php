@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Order\StoreOrderRequest;
 use App\Http\Requests\Order\UpdateOrderRequest;
+use App\Http\Resources\LastDeliveryResource;
 use App\Http\Resources\OrderResource;
 use App\Http\Resources\ProductResource;
 use App\Models\Item;
 use App\Models\Order;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -29,7 +32,7 @@ class OrderController extends Controller
      * Store a newly created resource in storage.
      *
      * @param StoreOrderRequest $request
-     * @return Response
+     * @return OrderResource
      */
     public function store(StoreOrderRequest $request)
     {
@@ -47,7 +50,7 @@ class OrderController extends Controller
      * Display the specified resource.
      *
      * @param Order $order
-     * @return Response
+     * @return OrderResource
      */
     public function show(Order $order)
     {
@@ -78,5 +81,15 @@ class OrderController extends Controller
         $order->delete();
 
         return \response()->json(null, 204);
+    }
+
+    public function lastDelivery(Request $request)
+    {
+        /** @var User $user */
+        $user = $request->user();
+
+        $order = $user->orders()->latest()->first();
+
+        return LastDeliveryResource::make($order);
     }
 }

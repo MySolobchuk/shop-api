@@ -38,15 +38,18 @@ class AuthController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'string|max:255',
+            'surname' => 'string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8',
-            'gender' => ['string', new EnumValue(Gender::class)]
+            'gender' => ['string', new EnumValue(Gender::class)],
+            'agree_to_receive_information' => ['required', 'bool']
         ]);
 
         $user = User::create([
-            'name' => $validatedData['name'],
+            'name' => $validatedData['name'] ?? null,
+            'surname' => $validatedData['name'] ?? null,
             'email' => $validatedData['email'],
-            'gender' => $validatedData['gender'],
+            'gender' => $validatedData['gender'] ?? null,
             'password' => Hash::make($validatedData['password']),
         ]);
 
