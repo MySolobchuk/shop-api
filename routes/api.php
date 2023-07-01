@@ -65,6 +65,7 @@ Route::controller(ProductController::class)->prefix('products')->group(function 
     });
 
     Route::get('/', 'index');
+    Route::get('/search', 'search');
     Route::get('/{product}', 'show');
 
     Route::middleware(['auth:sanctum', 'admin'])->group(function () {

@@ -30,11 +30,11 @@ class ProductController extends Controller
             'price' => 'array',
         ]);
 
-        $categoryIds = $validatedData['category_ids'];
+        $categoryIds = $validatedData['category_ids'] ?? [];
 
-        $price = $validatedData['price'];
+        $price = $validatedData['price'] ?? [];
 
-        $sort = $validatedData['sort'];
+        $sort = $validatedData['sort'] ?? [];
 
         $query = Product::with('category', 'feedbacks');
 
@@ -53,10 +53,15 @@ class ProductController extends Controller
             $query->where('price', '<=', $price['max']);
         }
 
-        return  ProductResource::collection($query->paginate(20))->additional(['meta' => [
+        return ProductResource::collection($query->paginate(20))->additional(['meta' => [
             'max_price' => Product::max('price'),
             'min_price' => Product::min('price'),
         ]]);
+    }
+
+    public function search(Request $request)
+    {
+        return ProductResource::collection(Product::search($request->get('search'))->get());
     }
 
     /**
