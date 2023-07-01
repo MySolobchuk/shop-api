@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreFeedbackRequests;
-use App\Http\Requests\UpdateFeedbackRequests;
+use App\Http\Requests\Feedback\StoreFeedbackRequests;
+use App\Http\Requests\Feedback\UpdateFeedbackRequests;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\FeedbackResource;
 use App\Models\Feedback;

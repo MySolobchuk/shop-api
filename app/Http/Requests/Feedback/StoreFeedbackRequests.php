@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Feedback;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateFeedbackRequests extends FormRequest
+class StoreFeedbackRequests extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,9 @@ class UpdateFeedbackRequests extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['string', 'min:2'],
+            'name' => ['string', 'required', 'min:2'],
             'product_id' => ['exists:products,id', 'required'],
-            'message' => ['string', 'min:2'],
+            'message' => ['string', 'required', 'min:2'],
             'avatar' => ['string', 'min:2'],
         ];
     }

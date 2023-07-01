@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Gender;
 use App\Http\Requests\Product\StoreProductRequest;
 use App\Http\Requests\Product\UpdateProductRequest;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
+use App\Models\User;
+use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
@@ -18,9 +22,41 @@ class ProductController extends Controller
      *
      * @return AnonymousResourceCollection
      */
-    public function index()
+    public function index(Request $request)
     {
-        return ProductResource::collection(Product::with('category', 'feedbacks')->paginate());
+        $validatedData = $request->validate([
+            'category_ids' => 'array',
+            'sort' => 'array',
+            'price' => 'array',
+        ]);
+
+        $categoryIds = $validatedData['category_ids'];
+
+        $price = $validatedData['price'];
+
+        $sort = $validatedData['sort'];
+
+        $query = Product::with('category', 'feedbacks');
+
+        $query->orderBy($sort['column'] ?? 'name', $sort['type'] ?? 'asc');
+
+        if(!empty($categoryIds)) {
+
+            $query->whereIn('category_id', $categoryIds);
+        }
+
+        if(!empty($price['min'])) {
+            $query->where('price', '>=', $price['min']);
+        }
+
+        if(!empty($price['max'])) {
+            $query->where('price', '<=', $price['max']);
+        }
+
+        return  ProductResource::collection($query->paginate(20))->additional(['meta' => [
+            'max_price' => Product::max('price'),
+            'min_price' => Product::min('price'),
+        ]]);
     }
 
     /**
@@ -78,5 +114,43 @@ class ProductController extends Controller
         $product->delete();
 
         return \response()->json(null, 204);
+    }
+
+    public function addFavorites(Request $request)
+    {
+        $validatedData = $request->validate([
+            'product_id' => ['integer', 'required', 'exists:products,id'],
+        ]);
+
+        /** @var User $user */
+        $user = $request->user();
+
+        $user->favorites()->attach($validatedData['product_id']);
+
+        return response()->json();
+    }
+
+    public function removeFavorites(Request $request)
+    {
+        $validatedData = $request->validate([
+            'product_id' => ['integer', 'required', 'exists:products,id'],
+        ]);
+
+        /** @var User $user */
+        $user = $request->user();
+
+        $user->favorites()->detach($validatedData['product_id']);
+
+        return response()->json();
+    }
+
+    public function usersFavorites(Request $request)
+    {
+        /** @var User $user */
+        $user = $request->user();
+
+        $products =  $user->favorites()->with(['category', 'feedbacks'])->get();
+
+        return ProductResource::collection($products);
     }
 }

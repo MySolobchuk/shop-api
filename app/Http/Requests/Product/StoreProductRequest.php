@@ -27,7 +27,7 @@ class StoreProductRequest extends FormRequest
             'name' => ['required', 'max:80'],
             'labelMark' => ['nullable', 'max:80'],
             'description' => ['nullable'],
-            'discount' => ['nullable','integer', 'min:1', 'max:99'],
+            'discount' => ['nullable','integer', 'min:1', 'max:100'],
             'price' => ['required','numeric'],
             'code' => ['required', 'string'],
             'quantity' => ['nullable', 'integer'],
@@ -36,7 +36,9 @@ class StoreProductRequest extends FormRequest
             'promoCod' => ['nullable', 'string'],
             'status' => ['nullable', 'boolean'],
             'unit_of_measure' => ['string'],
-            'images' => ['nullable', 'array']
+            'images' => ['nullable', 'array'],
+            'type' => ['required','string'],
+            'weight' => ['required','integer'],
         ];
     }
 }

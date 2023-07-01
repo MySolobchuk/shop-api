@@ -3,6 +3,7 @@
 use App\Enums\Gender;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FavoritesController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
@@ -57,6 +58,12 @@ Route::controller(CategoryController::class)->prefix('categories')->group(functi
 });
 
 Route::controller(ProductController::class)->prefix('products')->group(function () {
+    Route::middleware(['auth:sanctum'])->group(function () {
+        Route::get('/favorites', 'usersFavorites');
+        Route::post('/favorites', 'addFavorites');
+        Route::post('/favorites/remove', 'removeFavorites');
+    });
+
     Route::get('/', 'index');
     Route::get('/{product}', 'show');
 
@@ -82,6 +89,18 @@ Route::post('/admin/login', [AuthController::class, 'login']);
 Route::post('/registration', [AuthController::class, 'clientRegistration']);
 
 Route::controller(OrderController::class)->prefix('orders')->group(function () {
+    Route::get('/', 'index');
+
+    Route::get('/last-delivery', 'lastDelivery')->middleware(['auth:sanctum']);
+
+    Route::get('/{order}', 'show');
+
+    Route::post('/', 'store');
+//    Route::post('/{order}', 'update');
+    Route::delete('/{order}', 'destroy');
+});
+
+Route::controller(FavoritesController::class)->prefix('orders')->group(function () {
     Route::get('/', 'index');
 
     Route::get('/last-delivery', 'lastDelivery')->middleware(['auth:sanctum']);
