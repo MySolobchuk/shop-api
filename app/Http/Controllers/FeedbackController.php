@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Feedback\StoreFeedbackRequests;
 use App\Http\Requests\Feedback\UpdateFeedbackRequests;
-use App\Http\Resources\CategoryResource;
+use App\Http\Resources\DeliveryResource;
 use App\Http\Resources\FeedbackResource;
 use App\Models\Feedback;
 use Illuminate\Http\JsonResponse;
@@ -60,7 +60,7 @@ class FeedbackController extends Controller
     {
         $feedback->update($request->all());
 
-        return CategoryResource::make($feedback->load('product'));
+        return DeliveryResource::make($feedback->load('product'));
     }
 
     /**

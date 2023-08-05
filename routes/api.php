@@ -2,7 +2,9 @@
 
 use App\Enums\Gender;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BoxController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\FavoritesController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\OrderController;
@@ -54,6 +56,28 @@ Route::controller(CategoryController::class)->prefix('categories')->group(functi
         Route::post('/', 'store');
         Route::post('/{category}', 'update');
         Route::delete('/{category}', 'destroy');
+    });
+});
+
+Route::controller(DeliveryController::class)->prefix('deliveries')->group(function () {
+    Route::get('/', 'index');
+    Route::get('/{delivery}', 'show');
+
+    Route::middleware(['auth:sanctum', 'admin'])->group(function () {
+        Route::post('/', 'store');
+        Route::post('/{delivery}', 'update');
+        Route::delete('/{delivery}', 'destroy');
+    });
+});
+
+Route::controller(BoxController::class)->prefix('boxes')->group(function () {
+    Route::get('/', 'index');
+    Route::get('/{box}', 'show');
+
+    Route::middleware(['auth:sanctum', 'admin'])->group(function () {
+        Route::post('/', 'store');
+        Route::post('/{box}', 'update');
+        Route::delete('/{box}', 'destroy');
     });
 });
 

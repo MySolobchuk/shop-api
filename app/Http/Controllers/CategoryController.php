@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Category\StoreCategoryRequest;
 use App\Http\Requests\Category\UpdateCategoryRequest;
-use App\Http\Resources\CategoryResource;
+use App\Http\Resources\DeliveryResource;
 use App\Models\Category;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
@@ -19,7 +19,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return CategoryResource::collection(Category::with('products', 'parent', 'children')->paginate());
+        return DeliveryResource::collection(Category::with('products', 'parent', 'children')->paginate());
     }
 
     /**
@@ -34,7 +34,7 @@ class CategoryController extends Controller
 
         $category = $category->fresh();
 
-        return CategoryResource::make($category->load('products', 'parent', 'children'));
+        return DeliveryResource::make($category->load('products', 'parent', 'children'));
     }
 
     /**
@@ -45,7 +45,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return CategoryResource::make($category->load('products', 'parent', 'children'));
+        return DeliveryResource::make($category->load('products', 'parent', 'children'));
     }
 
     /**
@@ -59,7 +59,7 @@ class CategoryController extends Controller
     {
         $category->update($request->all());
 
-        return CategoryResource::make($category->load('products', 'parent', 'children'));
+        return DeliveryResource::make($category->load('products', 'parent', 'children'));
     }
 
     /**
