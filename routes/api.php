@@ -125,7 +125,7 @@ Route::controller(OrderController::class)->prefix('orders')->group(function () {
     Route::delete('/{order}', 'destroy');
 });
 
-Route::controller(FavoritesController::class)->prefix('orders')->group(function () {
+Route::controller(FavoritesController::class)->prefix('favorites')->group(function () {
     Route::get('/', 'index');
 
     Route::get('/last-delivery', 'lastDelivery')->middleware(['auth:sanctum']);

@@ -23,6 +23,7 @@ class OrderResource extends JsonResource
             'confirm_regulations_store' => $this->confirm_regulations_store,
             'confirm_privacy_policy' => $this->confirm_privacy_policy,
             'price' => $this->getPrice(),
+            'deliver_price' => $this->getBoxPrice(),
             'created_at' => $this->created_at,
         ];
     }

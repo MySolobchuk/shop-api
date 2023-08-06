@@ -27,6 +27,7 @@ class DeliveryController extends Controller
      *
      * @param StoreDeliveryRequest $request
      * @return Response
+     *
      */
     public function store(StoreDeliveryRequest $request)
     {

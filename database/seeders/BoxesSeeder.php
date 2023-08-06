@@ -19,21 +19,21 @@ class BoxesSeeder extends Seeder
             [
                 'id' => 1,
                 'title' => 'small',
-                'unit_of_measure' => 10,
+                'size' => 10,
                 'price' => 10.00,
                 'delivery_id' => 1
             ],
             [
                 'id' => 2,
                 'title' => 'medium',
-                'unit_of_measure' => 100,
+                'size' => 100,
                 'price' => 20.00,
                 'delivery_id' => 1
             ],
             [
                 'id' => 3,
                 'title' => 'large',
-                'unit_of_measure' => 1000,
+                'size' => 1000,
                 'price' => 30.00,
                 'delivery_id' => 1
             ]

@@ -34,8 +34,22 @@ class Item extends Model
 
     public function getPrice(): float
     {
-        $price = $this->product->price * $this->count;
+        $price = ($this->product->price * $this->count) + $this->boxPrice();
 
-        return $this->product->discount ? $price - ($price * $this->product->discount / 100) : $price;
+        return round($this->product->discount ? $price - ($price * $this->product->discount / 100) : $price, 2);
+    }
+
+    public function boxCount(): int
+    {
+        $box = $this->product->box;
+
+        $totalSize = $this->product->size * $this->count;
+
+        return ceil($totalSize / $box->size);
+    }
+
+    public function boxPrice(): float
+    {
+        return round($this->boxCount() * $this->product->box->price, 2);
     }
 }

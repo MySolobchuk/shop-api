@@ -59,6 +59,8 @@ class ProductSeeder extends Seeder
                 'category_id' => $this->faker->numberBetween(1, 7),
                 'promoCod' => null,
                 'status' => 0,
+                'box_id' => 1,
+                'size' => 7,
                 'quantity' => $this->faker->numberBetween(1, 99),
                 'unit_of_measure' => $this->faker->numberBetween(1, 99),
                 'images' => json_encode([
@@ -82,6 +84,8 @@ class ProductSeeder extends Seeder
                 'category_id' => $this->faker->numberBetween(1, 7),
                 'promoCod' => null,
                 'status' => 0,
+                'box_id' => 1,
+                'size' => 7,
                 'quantity' => $this->faker->numberBetween(1, 99),
                 'unit_of_measure' => $this->faker->numberBetween(1, 99),
                 'images' => json_encode([
@@ -105,6 +109,8 @@ class ProductSeeder extends Seeder
                 'category_id' => $this->faker->numberBetween(1, 7),
                 'promoCod' => null,
                 'status' => 0,
+                'box_id' => 2,
+                'size' => 107,
                 'quantity' => $this->faker->numberBetween(1, 99),
                 'unit_of_measure' => $this->faker->numberBetween(1, 99),
                 'images' => json_encode([
@@ -128,6 +134,8 @@ class ProductSeeder extends Seeder
                 'category_id' => $this->faker->numberBetween(1, 7),
                 'promoCod' => null,
                 'status' => 0,
+                'box_id' => 2,
+                'size' => 107,
                 'quantity' => $this->faker->numberBetween(1, 99),
                 'unit_of_measure' => $this->faker->numberBetween(1, 99),
                 'images' => json_encode([
@@ -151,6 +159,8 @@ class ProductSeeder extends Seeder
                 'category_id' => $this->faker->numberBetween(1, 7),
                 'promoCod' => null,
                 'status' => 0,
+                'box_id' => 3,
+                'size' => 1007,
                 'quantity' => $this->faker->numberBetween(1, 99),
                 'unit_of_measure' => $this->faker->numberBetween(1, 99),
                 'images' => json_encode([
@@ -174,6 +184,8 @@ class ProductSeeder extends Seeder
                 'category_id' => $this->faker->numberBetween(1, 7),
                 'promoCod' => null,
                 'status' => 0,
+                'box_id' => 3,
+                'size' => 1007,
                 'quantity' => $this->faker->numberBetween(1, 99),
                 'unit_of_measure' => $this->faker->numberBetween(1, 99),
                 'images' => json_encode([
@@ -197,6 +209,8 @@ class ProductSeeder extends Seeder
                 'category_id' => $this->faker->numberBetween(1, 7),
                 'promoCod' => null,
                 'status' => 0,
+                'box_id' => 3,
+                'size' => 1007,
                 'quantity' => $this->faker->numberBetween(1, 99),
                 'unit_of_measure' => $this->faker->numberBetween(1, 99),
                 'images' => json_encode([
@@ -220,6 +234,8 @@ class ProductSeeder extends Seeder
                 'category_id' => $this->faker->numberBetween(1, 7),
                 'promoCod' => null,
                 'status' => 0,
+                'box_id' => 1,
+                'size' => 5,
                 'quantity' => $this->faker->numberBetween(1, 99),
                 'unit_of_measure' => $this->faker->numberBetween(1, 99),
                 'images' => json_encode([
@@ -243,6 +259,8 @@ class ProductSeeder extends Seeder
                 'category_id' => $this->faker->numberBetween(1, 7),
                 'promoCod' => null,
                 'status' => 0,
+                'box_id' => 1,
+                'size' => 5,
                 'quantity' => $this->faker->numberBetween(1, 99),
                 'unit_of_measure' => $this->faker->numberBetween(1, 99),
                 'images' => json_encode([
@@ -266,6 +284,8 @@ class ProductSeeder extends Seeder
                 'category_id' => $this->faker->numberBetween(1, 7),
                 'promoCod' => null,
                 'status' => 0,
+                'box_id' => 3,
+                'size' => 70,
                 'quantity' => $this->faker->numberBetween(1, 99),
                 'unit_of_measure' => $this->faker->numberBetween(1, 99),
                 'images' => json_encode([
@@ -289,6 +309,8 @@ class ProductSeeder extends Seeder
                 'category_id' => $this->faker->numberBetween(1, 7),
                 'promoCod' => null,
                 'status' => 0,
+                'box_id' => 2,
+                'size' => 70,
                 'quantity' => $this->faker->numberBetween(1, 99),
                 'unit_of_measure' => $this->faker->numberBetween(1, 99),
                 'images' => json_encode([
@@ -312,6 +334,8 @@ class ProductSeeder extends Seeder
                 'category_id' => $this->faker->numberBetween(1, 7),
                 'promoCod' => null,
                 'status' => 0,
+                'box_id' => 1,
+                'size' => 74,
                 'quantity' => $this->faker->numberBetween(1, 99),
                 'unit_of_measure' => $this->faker->numberBetween(1, 99),
                 'images' => json_encode([
@@ -335,6 +359,8 @@ class ProductSeeder extends Seeder
                 'category_id' => $this->faker->numberBetween(1, 7),
                 'promoCod' => null,
                 'status' => 0,
+                'box_id' => 3,
+                'size' => 710,
                 'quantity' => $this->faker->numberBetween(1, 99),
                 'unit_of_measure' => $this->faker->numberBetween(1, 99),
                 'images' => json_encode([
@@ -358,6 +384,8 @@ class ProductSeeder extends Seeder
                 'category_id' => $this->faker->numberBetween(1, 7),
                 'promoCod' => null,
                 'status' => 0,
+                'box_id' => 3,
+                'size' => 700,
                 'quantity' => $this->faker->numberBetween(1, 99),
                 'unit_of_measure' => $this->faker->numberBetween(1, 99),
                 'images' => json_encode([
@@ -381,6 +409,8 @@ class ProductSeeder extends Seeder
                 'category_id' => $this->faker->numberBetween(1, 7),
                 'promoCod' => null,
                 'status' => 0,
+                'box_id' => 3,
+                'size' => 897,
                 'quantity' => $this->faker->numberBetween(1, 99),
                 'unit_of_measure' => $this->faker->numberBetween(1, 99),
                 'images' => json_encode([
@@ -404,6 +434,8 @@ class ProductSeeder extends Seeder
                 'category_id' => $this->faker->numberBetween(1, 7),
                 'promoCod' => null,
                 'status' => 0,
+                'box_id' => 2,
+                'size' => 27,
                 'quantity' => $this->faker->numberBetween(1, 99),
                 'unit_of_measure' => $this->faker->numberBetween(1, 99),
                 'images' => json_encode([
@@ -427,6 +459,8 @@ class ProductSeeder extends Seeder
                 'category_id' => $this->faker->numberBetween(1, 7),
                 'promoCod' => null,
                 'status' => 0,
+                'box_id' => 2,
+                'size' => 57,
                 'quantity' => $this->faker->numberBetween(1, 99),
                 'unit_of_measure' => $this->faker->numberBetween(1, 99),
                 'images' => json_encode([
@@ -450,6 +484,8 @@ class ProductSeeder extends Seeder
                 'category_id' => $this->faker->numberBetween(1, 7),
                 'promoCod' => null,
                 'status' => 0,
+                'box_id' => 2,
+                'size' => 73,
                 'quantity' => $this->faker->numberBetween(1, 99),
                 'unit_of_measure' => $this->faker->numberBetween(1, 99),
                 'images' => json_encode([
@@ -473,6 +509,8 @@ class ProductSeeder extends Seeder
                 'category_id' => $this->faker->numberBetween(1, 7),
                 'promoCod' => null,
                 'status' => 0,
+                'box_id' => 2,
+                'size' => 72,
                 'quantity' => $this->faker->numberBetween(1, 99),
                 'unit_of_measure' => $this->faker->numberBetween(1, 99),
                 'images' => json_encode([
@@ -496,6 +534,8 @@ class ProductSeeder extends Seeder
                 'category_id' => $this->faker->numberBetween(1, 7),
                 'promoCod' => null,
                 'status' => 0,
+                'box_id' => 3,
+                'size' => 7345,
                 'quantity' => $this->faker->numberBetween(1, 99),
                 'unit_of_measure' => $this->faker->numberBetween(1, 99),
                 'images' => json_encode([
@@ -519,6 +559,8 @@ class ProductSeeder extends Seeder
                 'category_id' => $this->faker->numberBetween(1, 7),
                 'promoCod' => null,
                 'status' => 0,
+                'box_id' => 3,
+                'size' => 743,
                 'quantity' => $this->faker->numberBetween(1, 99),
                 'unit_of_measure' => $this->faker->numberBetween(1, 99),
                 'images' => json_encode([
@@ -542,6 +584,8 @@ class ProductSeeder extends Seeder
                 'category_id' => $this->faker->numberBetween(1, 7),
                 'promoCod' => null,
                 'status' => 0,
+                'box_id' => 2,
+                'size' => 712,
                 'quantity' => $this->faker->numberBetween(1, 99),
                 'unit_of_measure' => $this->faker->numberBetween(1, 99),
                 'images' => json_encode([
@@ -565,6 +609,8 @@ class ProductSeeder extends Seeder
                 'category_id' => $this->faker->numberBetween(1, 7),
                 'promoCod' => null,
                 'status' => 0,
+                'box_id' => 3,
+                'size' => 56,
                 'quantity' => $this->faker->numberBetween(1, 99),
                 'unit_of_measure' => $this->faker->numberBetween(1, 99),
                 'images' => json_encode([
@@ -588,6 +634,8 @@ class ProductSeeder extends Seeder
                 'category_id' => $this->faker->numberBetween(1, 7),
                 'promoCod' => null,
                 'status' => 0,
+                'box_id' => 2,
+                'size' => 712,
                 'quantity' => $this->faker->numberBetween(1, 99),
                 'unit_of_measure' => $this->faker->numberBetween(1, 99),
                 'images' => json_encode([
@@ -611,6 +659,8 @@ class ProductSeeder extends Seeder
                 'category_id' => $this->faker->numberBetween(1, 7),
                 'promoCod' => null,
                 'status' => 0,
+                'box_id' => 2,
+                'size' => 7,
                 'quantity' => $this->faker->numberBetween(1, 99),
                 'unit_of_measure' => $this->faker->numberBetween(1, 99),
                 'images' => json_encode([
@@ -634,6 +684,8 @@ class ProductSeeder extends Seeder
                 'category_id' => $this->faker->numberBetween(1, 7),
                 'promoCod' => null,
                 'status' => 0,
+                'box_id' => 3,
+                'size' => 7,
                 'quantity' => $this->faker->numberBetween(1, 99),
                 'unit_of_measure' => $this->faker->numberBetween(1, 99),
                 'images' => json_encode([
@@ -657,6 +709,8 @@ class ProductSeeder extends Seeder
                 'category_id' => $this->faker->numberBetween(1, 7),
                 'promoCod' => null,
                 'status' => 0,
+                'box_id' => 2,
+                'size' => 73,
                 'quantity' => $this->faker->numberBetween(1, 99),
                 'unit_of_measure' => $this->faker->numberBetween(1, 99),
                 'images' => json_encode([
@@ -680,6 +734,8 @@ class ProductSeeder extends Seeder
                 'category_id' => $this->faker->numberBetween(1, 7),
                 'promoCod' => null,
                 'status' => 0,
+                'box_id' => 1,
+                'size' => 7,
                 'quantity' => $this->faker->numberBetween(1, 99),
                 'unit_of_measure' => $this->faker->numberBetween(1, 99),
                 'images' => json_encode([

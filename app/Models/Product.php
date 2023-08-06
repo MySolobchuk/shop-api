@@ -29,6 +29,8 @@ class Product extends Model
         'promoCod',
         'status',
         'quantity',
+        'delivery_id',
+        'size',
         'unit_of_measure',
         'images',
         'weight',
@@ -45,6 +47,10 @@ class Product extends Model
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
+    }
+    public function box(): BelongsTo
+    {
+        return $this->belongsTo(Box::class);
     }
 
     public function feedbacks(): HasMany
