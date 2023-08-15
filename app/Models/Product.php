@@ -34,7 +34,8 @@ class Product extends Model
         'unit_of_measure',
         'images',
         'weight',
-        'type'
+        'type',
+        'box_id'
     ];
 
     protected $casts = [

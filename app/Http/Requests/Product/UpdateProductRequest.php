@@ -39,6 +39,8 @@ class UpdateProductRequest extends FormRequest
             'images' => ['nullable', 'array'],
             'type' => ['required','string'],
             'weight' => ['required','integer'],
+            'box_id' => ['exists:boxes,id', 'integer'],
+            'size' => ['required', 'integer'],
         ];
     }
 }
