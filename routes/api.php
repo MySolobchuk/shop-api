@@ -96,6 +96,8 @@ Route::controller(ProductController::class)->prefix('products')->group(function 
         Route::post('/', 'store');
         Route::post('/{product}', 'update');
         Route::delete('/{product}', 'destroy');
+        Route::get('/admin/all', 'adminIndex');
+
     });
 });
 

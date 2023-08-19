@@ -22,6 +22,7 @@ class Product extends Model
         'labelMark',
         'description',
         'discount',
+        'discount_label',
         'price',
         'code',
         'preview',

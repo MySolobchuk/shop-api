@@ -28,6 +28,7 @@ class UpdateProductRequest extends FormRequest
             'labelMark' => ['nullable', 'max:80'],
             'description' => ['nullable'],
             'discount' => ['nullable','integer', 'min:1', 'max:100'],
+            'discount_label' => ['nullable','string'],
             'price' => ['required','numeric'],
             'code' => ['nullable', 'string'],
             'quantity' => ['nullable', 'integer'],

@@ -38,6 +38,45 @@ class ProductController extends Controller
 
         $query = Product::with('category', 'feedbacks');
 
+        $query->where('status', true);
+
+        $query->orderBy($sort['column'] ?? 'name', $sort['type'] ?? 'asc');
+
+        if(!empty($categoryIds)) {
+
+            $query->whereIn('category_id', $categoryIds);
+        }
+
+        if(!empty($price['min'])) {
+            $query->where('price', '>=', $price['min']);
+        }
+
+        if(!empty($price['max'])) {
+            $query->where('price', '<=', $price['max']);
+        }
+
+        return ProductResource::collection($query->paginate(20))->additional(['meta' => [
+            'max_price' => Product::max('price'),
+            'min_price' => Product::min('price'),
+        ]]);
+    }
+
+    public function adminIndex(Request $request) {
+
+        $validatedData = $request->validate([
+            'category_ids' => 'array',
+            'sort' => 'array',
+            'price' => 'array',
+        ]);
+
+        $categoryIds = $validatedData['category_ids'] ?? [];
+
+        $price = $validatedData['price'] ?? [];
+
+        $sort = $validatedData['sort'] ?? [];
+
+        $query = Product::with('category', 'feedbacks');
+
         $query->orderBy($sort['column'] ?? 'name', $sort['type'] ?? 'asc');
 
         if(!empty($categoryIds)) {
