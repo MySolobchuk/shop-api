@@ -15,6 +15,10 @@ class Delivery extends Model
 {
     protected $fillable = [
         'title',
+        'time',
+        'payment',
+        'protected',
+        'methodPayment',
     ];
 
     protected $casts = [

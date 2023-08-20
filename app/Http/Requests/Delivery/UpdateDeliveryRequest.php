@@ -25,6 +25,10 @@ class UpdateDeliveryRequest extends FormRequest
     {
         return [
             'title' => ['required', 'max:80'],
+            'time' => ['nullable', 'string'],
+            'payment' => ['nullable', 'string'],
+            'protected' => ['nullable', 'string'],
+            'methodPayment' => ['nullable', 'string'],
         ];
     }
 }
