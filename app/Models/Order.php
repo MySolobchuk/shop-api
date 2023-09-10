@@ -44,7 +44,7 @@ class Order extends Model
         $price = null;
 
         foreach ($this->items as $item) {
-            $price+= $item->getPrice() + $item->boxPrice();
+            $price+= $item->getPrice();
         }
 
         return round($price, 2);
