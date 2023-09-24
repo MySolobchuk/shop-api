@@ -28,6 +28,7 @@ class ProductController extends Controller
             'category_ids' => 'array',
             'sort' => 'array',
             'price' => 'array',
+            'perPage' => 'integer'
         ]);
 
         $categoryIds = $validatedData['category_ids'] ?? [];
@@ -55,7 +56,7 @@ class ProductController extends Controller
             $query->where('price', '<=', $price['max']);
         }
 
-        return ProductResource::collection($query->paginate(20))->additional(['meta' => [
+        return ProductResource::collection($query->paginate($validatedData['perPage'] ?? 20))->additional(['meta' => [
             'max_price' => Product::max('price'),
             'min_price' => Product::min('price'),
         ]]);
