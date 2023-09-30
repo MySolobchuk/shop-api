@@ -17,6 +17,7 @@ class Box extends Model
         'size',
         'price',
         'delivery_id',
+        'methodPayment',
     ];
 
     protected $casts = [

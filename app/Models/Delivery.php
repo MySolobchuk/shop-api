@@ -18,7 +18,6 @@ class Delivery extends Model
         'time',
         'payment',
         'protected',
-        'methodPayment',
     ];
 
     protected $casts = [

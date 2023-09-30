@@ -28,6 +28,7 @@ class UpdateBoxRequest extends FormRequest
             'size' => ['required', 'integer', 'min::0'],
             'price' => ['required', 'numeric', 'min:0'],
             'delivery_id' => ['required', 'exists:deliveries,id'],
+            'methodPayment' => ['nullable', 'string'],
         ];
     }
 }

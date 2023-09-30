@@ -28,7 +28,6 @@ class StoreDeliveryRequest extends FormRequest
             'time' => ['nullable', 'string'],
             'payment' => ['nullable', 'string'],
             'protected' => ['nullable', 'string'],
-            'methodPayment' => ['nullable', 'string'],
         ];
     }
 
