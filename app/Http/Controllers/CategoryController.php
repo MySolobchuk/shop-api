@@ -30,8 +30,6 @@ class CategoryController extends Controller
 
         $query = Category::with('products', 'parent', 'children');
 
-        $query->where('status', true);
-
         $query->orderBy($sort['column'] ?? 'name', $sort['type'] ?? 'asc');
 
         return CategoryResource::collection($query->paginate($validatedData['perPage'] ?? 20));
