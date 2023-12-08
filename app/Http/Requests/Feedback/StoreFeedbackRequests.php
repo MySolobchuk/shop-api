@@ -27,7 +27,7 @@ class StoreFeedbackRequests extends FormRequest
             'name' => ['string', 'required', 'min:2'],
             'product_id' => ['exists:products,id', 'required'],
             'message' => ['string', 'required', 'min:2'],
-            'avatar' => ['string', 'min:2'],
+            'avatar' => ['string'],
         ];
     }
 }
