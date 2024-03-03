@@ -12,6 +12,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Order extends Model
 {
     protected $table = 'orders';
+
+    protected $guarded = ['status'];
+
     protected $fillable = [
         'user_id',
         'user_information',
@@ -28,6 +31,9 @@ class Order extends Model
         'confirm_regulations_store' => 'boolean',
         'confirm_privacy_policy' => 'boolean',
     ];
+    /**
+     * @var int
+     */
 
     public function items(): HasMany
     {
@@ -59,5 +65,10 @@ class Order extends Model
         }
 
         return round($price, 2);
+    }
+
+    public function startCheckout()
+    {
+        $this->status = 1;
     }
 }

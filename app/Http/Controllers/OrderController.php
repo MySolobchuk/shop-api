@@ -10,6 +10,7 @@ use App\Http\Resources\ProductResource;
 use App\Models\Item;
 use App\Models\Order;
 use App\Models\User;
+use App\Services\Order\Checkout;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
@@ -55,6 +56,17 @@ class OrderController extends Controller
     public function show(Order $order)
     {
         return OrderResource::make($order->load('items', 'items.product'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Order $order
+     * @return \Illuminate\Http\Client\Response
+     */
+    public function checkout(Order $order, Checkout $checkout)
+    {
+        return $checkout->checkout($order);
     }
 
 
