@@ -123,7 +123,7 @@ Route::controller(OrderController::class)->prefix('orders')->group(function () {
     Route::get('/{order}', 'show');
 
     Route::post('/', 'store');
-//    Route::post('/{order}', 'update');
+    Route::post('/{order}/checkout', 'checkout');
     Route::delete('/{order}', 'destroy');
 });
 
