@@ -71,4 +71,10 @@ class Order extends Model
     {
         $this->status = 1;
     }
+
+    public function verify(int $pid)
+    {
+        $this->pid = $pid;
+        $this->status = 2;
+    }
 }

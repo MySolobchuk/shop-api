@@ -124,6 +124,7 @@ Route::controller(OrderController::class)->prefix('orders')->group(function () {
 
     Route::post('/', 'store');
     Route::post('/{order}/checkout', 'checkout');
+    Route::post('/{order}/verify', 'verify');
     Route::delete('/{order}', 'destroy');
 });
 
